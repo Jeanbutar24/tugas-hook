@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Search from "./search";
 
 function ContentKw(props) {
-  const [search, setSearch] = useState("tesla");
+  const [search, setSearch] = useState("");
   const [news, setNews] = useState({
     status: "",
     totalResults: null,
@@ -15,7 +15,7 @@ function ContentKw(props) {
   const getNews = async () => {
     try {
       let response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${search}&apiKey=0b3f90995f054bb4933aaa00d9e4eda3`
+        `https://newsapi.org/v2/everything?q=${search}&apiKey=2d7711600cde489a8ef98e45f688bf3b`
       );
       //   console.log(response.data);
       setNews({
@@ -35,28 +35,23 @@ function ContentKw(props) {
     setSearch(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(news.articles);
-  };
   const data = news.articles;
   return (
-    <div className="container bg-dark rounded">
-      <form onSubmit={handleSubmit} className="mt-5">
+    <div className="container">
+      <form className="mt-5">
         <Search
           placeholder="Cari berita anda"
           value={search}
           onChange={handleChange}
           className="item-center rounded mt-5 form-control"
         />
-        <button>Search</button>
       </form>
 
       <div className="container">
         <div className="container">
           <div className="row bg-dark mt-5 rounded-pill">
             {news.articles.map((user, index) => (
-              <div className="col-md-4 my-5" key={index}>
+              <div className="col-md-3 my-5" key={index}>
                 <div className="card">
                   <img
                     src={user.urlToImage}
