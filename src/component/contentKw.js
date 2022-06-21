@@ -47,14 +47,14 @@ function ContentKw(props) {
           placeholder="Cari berita anda"
           value={search}
           onChange={handleChange}
-          className="item-center rounded mt-5 "
+          className="item-center rounded mt-5 form-control"
         />
         <button>Search</button>
       </form>
 
       <div className="container">
         <div className="container">
-          <div className="row">
+          <div className="row bg-dark mt-5 rounded-pill">
             {news.articles.map((user, index) => (
               <div className="col-md-4 my-5" key={index}>
                 <div className="card">
